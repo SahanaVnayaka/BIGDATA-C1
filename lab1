@@ -1,0 +1,94 @@
+hdoop@admin1-HP-280-G4-MT-Business-PC:~$ mongo -version
+MongoDB shell version v5.0.6
+Build Info: {
+    "version": "5.0.6",
+    "gitVersion": "212a8dbb47f07427dae194a9c75baec1d81d9259",
+    "openSSLVersion": "OpenSSL 1.1.1f  31 Mar 2020",
+    "modules": [],
+    "allocator": "tcmalloc",
+    "environment": {
+        "distmod": "ubuntu2004",
+        "distarch": "x86_64",
+        "target_arch": "x86_64"
+    }
+}
+hdoop@admin1-HP-280-G4-MT-Business-PC:~$ mongo
+MongoDB shell version v5.0.6
+connecting to: mongodb://127.0.0.1:27017/?compressors=disabled&gssapiServiceName=mongodb
+Implicit session: session { "id" : UUID("26f0e191-c61f-4e51-93c9-2ed88765686a") }
+MongoDB server version: 5.0.6
+================
+Warning: the "mongo" shell has been superseded by "mongosh",
+which delivers improved usability and compatibility.The "mongo" shell has been deprecated and will be removed in
+an upcoming release.
+For installation instructions, see
+https://docs.mongodb.com/mongodb-shell/install/
+================
+---
+The server generated these startup warnings when booting: 
+        2022-04-05T08:51:23.602+05:30: Using the XFS filesystem is strongly recommended with the WiredTiger storage engine. See http://dochub.mongodb.org/core/prodnotes-filesystem
+        2022-04-05T08:51:26.034+05:30: Access control is not enabled for the database. Read and write access to data and configuration is unrestricted
+---
+---
+        Enable MongoDB's free cloud-based monitoring service, which will then receive and display
+        metrics about your deployment (disk utilization, CPU, operation statistics, etc).
+
+        The monitoring data will be available on a MongoDB website with a unique URL accessible to you
+        and anyone you share the URL with. MongoDB may use this information to make product
+        improvements and to suggest MongoDB products and deployment options to you.
+
+        To enable free monitoring, run the following command: db.enableFreeMonitoring()
+        To permanently disable this reminder, run the following command: db.disableFreeMonitoring()
+---
+> show collections
+> show dbs
+116          0.000GB
+admin        0.000GB
+anirudh      0.000GB
+config       0.000GB
+employee     0.000GB
+local        0.000GB
+practise     0.000GB
+sahana135db  0.000GB
+sample       0.000GB
+> use sahana135db
+switched to db sahana135db
+> db.MOVIE.insertOne({id:"101", title: "Spiderman", year: "2000", director: "Stephen", chipped : true })
+{
+	"acknowledged" : true,
+	"insertedId" : ObjectId("624bc491e57324178e0bc7f7")
+}
+> db.MOVIE.insertMany([{ id:102,title:"Euphoria",year:2001, director:"Stephen",chipped: true}, {id:103,title:"Batman", year:2004,director: "maria", chipped: true}])
+{
+	"acknowledged" : true,
+	"insertedIds" : [
+		ObjectId("624bc4d9e57324178e0bc7f8"),
+		ObjectId("624bc4d9e57324178e0bc7f9")
+	]
+}
+> show collections
+MOVIE
+MOVIES
+MoviesDB
+> db.MOVIE.find()
+{ "_id" : ObjectId("624bc491e57324178e0bc7f7"), "id" : "101", "title" : "Spiderman", "year" : "2000", "director" : "Stephen", "chipped" : true }
+{ "_id" : ObjectId("624bc4d9e57324178e0bc7f8"), "id" : 102, "title" : "Euphoria", "year" : 2001, "director" : "Stephen", "chipped" : true }
+{ "_id" : ObjectId("624bc4d9e57324178e0bc7f9"), "id" : 103, "title" : "Batman", "year" : 2004, "director" : "maria", "chipped" : true }
+> db.MOVIE.updateOne({ id:101}, {$set:{year: "2005"}})
+{ "acknowledged" : true, "matchedCount" : 0, "modifiedCount" : 0 }
+> db.MOVIES.updateMany({ director:"Stephen"}, {$set:{director:"tom"}})
+{ "acknowledged" : true, "matchedCount" : 2, "modifiedCount" : 2 }
+> db.MOVIE.updateMany({ director:"Stephen"}, {$set:{director:"tom"}})
+{ "acknowledged" : true, "matchedCount" : 2, "modifiedCount" : 2 }
+> db.MOVIE.find()
+{ "_id" : ObjectId("624bc491e57324178e0bc7f7"), "id" : "101", "title" : "Spiderman", "year" : "2000", "director" : "tom", "chipped" : true }
+{ "_id" : ObjectId("624bc4d9e57324178e0bc7f8"), "id" : 102, "title" : "Euphoria", "year" : 2001, "director" : "tom", "chipped" : true }
+{ "_id" : ObjectId("624bc4d9e57324178e0bc7f9"), "id" : 103, "title" : "Batman", "year" : 2004, "director" : "maria", "chipped" : true }
+> db.MOVIE.updateOne({ id:101}, {$set:{year: "2005"}})
+{ "acknowledged" : true, "matchedCount" : 0, "modifiedCount" : 0 }
+> db.MOVIE.find()
+{ "_id" : ObjectId("624bc491e57324178e0bc7f7"), "id" : "101", "title" : "Spiderman", "year" : "2000", "director" : "tom", "chipped" : true }
+{ "_id" : ObjectId("624bc4d9e57324178e0bc7f8"), "id" : 102, "title" : "Euphoria", "year" : 2001, "director" : "tom", "chipped" : true }
+{ "_id" : ObjectId("624bc4d9e57324178e0bc7f9"), "id" : 103, "title" : "Batman", "year" : 2004, "director" : "maria", "chipped" : true }
+> 
+
