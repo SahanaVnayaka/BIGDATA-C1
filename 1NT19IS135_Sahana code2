@@ -1,0 +1,140 @@
+
+12 April
+                                                      CRUD OPERATIONS:
+2. Update :
+
+Update one:
+
+> db.Emp.updateOne({ name: "Satya"},{$set:{id: 106}})
+{ "acknowledged" : true, "matchedCount" : 1, "modifiedCount" : 1 }
+
+
+
+> db.Emp.find()
+
+{ "_id" : ObjectId("6254fa4a3e5d2c678d09ab0a"), "name" : "Adamya", "id" : 101, "department" : "R&D", "salary" : 30000 }
+{ "_id" : ObjectId("6254fc193e5d2c678d09ab0b"), "name" : "Sunayana", "id" : 102, "department" : "R&D", "salary" : 20000 }
+{ "_id" : ObjectId("6254fc193e5d2c678d09ab0c"), "name" : "Maduri", "id" : 103, "department" : "software", "salary" : 30000 }
+{ "_id" : ObjectId("6254fc193e5d2c678d09ab0d"), "name" : "Addy", "id" : 104, "department" : "programming", "salary" : 40000 }
+{ "_id" : ObjectId("6254fc193e5d2c678d09ab0e"), "name" : "Satya", "id" : 106, "department" : "software", "salary" : 45000 }
+{ "_id" : ObjectId("6254fc193e5d2c678d09ab0f"), "name" : "Eshwar", "id" : 105, "department" : "R&D", "salary" : 30000 }
+
+Update Many:
+
+> db.Emp.updateMany({ department: "software"},{$set:{department: "Robotics"}})
+{ "acknowledged" : true, "matchedCount" : 2, "modifiedCount" : 2 }
+
+
+> db.Emp.find()
+
+
+{ "_id" : ObjectId("6254fa4a3e5d2c678d09ab0a"), "name" : "Adamya", "id" : 101, "department" : "R&D", "salary" : 30000 }
+{ "_id" : ObjectId("6254fc193e5d2c678d09ab0b"), "name" : "Sunayana", "id" : 102, "department" : "R&D", "salary" : 20000 }
+{ "_id" : ObjectId("6254fc193e5d2c678d09ab0c"), "name" : "Maduri", "id" : 103, "department" : "Robotics", "salary" : 30000 }
+{ "_id" : ObjectId("6254fc193e5d2c678d09ab0d"), "name" : "Addy", "id" : 104, "department" : "programming", "salary" : 40000 }
+{ "_id" : ObjectId("6254fc193e5d2c678d09ab0e"), "name" : "Satya", "id" : 106, "department" : "Robotics", "salary" : 45000 }
+{ "_id" : ObjectId("6254fc193e5d2c678d09ab0f"), "name" : "Eshwar", "id" : 105, "department" : "R&D", "salary" : 30000 }
+
+RepalceOne:
+
+> db.Emp.replaceOne({id: 105},{name: "Manju"})
+{ "acknowledged" : true, "matchedCount" : 1, "modifiedCount" : 1 }
+
+
+> db.Emp.find()
+
+
+{ "_id" : ObjectId("6254fa4a3e5d2c678d09ab0a"), "name" : "Adamya", "id" : 101, "department" : "R&D", "salary" : 30000 }
+{ "_id" : ObjectId("6254fc193e5d2c678d09ab0b"), "name" : "Sunayana", "id" : 102, "department" : "R&D", "salary" : 20000 }
+{ "_id" : ObjectId("6254fc193e5d2c678d09ab0c"), "name" : "Maduri", "id" : 103, "department" : "Robotics", "salary" : 30000 }
+{ "_id" : ObjectId("6254fc193e5d2c678d09ab0d"), "name" : "Addy", "id" : 104, "department" : "programming", "salary" : 40000 }
+{ "_id" : ObjectId("6254fc193e5d2c678d09ab0e"), "name" : "Satya", "id" : 106, "department" : "Robotics", "salary" : 45000 }
+{ "_id" : ObjectId("6254fc193e5d2c678d09ab0f"), "name" : "Manju" }
+> db.Emp.deleteOne({ name: "Manju"})
+{ "acknowledged" : true, "deletedCount" : 1 }
+
+
+> db.Emp.find()
+
+
+{ "_id" : ObjectId("6254fa4a3e5d2c678d09ab0a"), "name" : "Adamya", "id" : 101, "department" : "R&D", "salary" : 30000 }
+{ "_id" : ObjectId("6254fc193e5d2c678d09ab0b"), "name" : "Sunayana", "id" : 102, "department" : "R&D", "salary" : 20000 }
+{ "_id" : ObjectId("6254fc193e5d2c678d09ab0c"), "name" : "Maduri", "id" : 103, "department" : "Robotics", "salary" : 30000 }
+{ "_id" : ObjectId("6254fc193e5d2c678d09ab0d"), "name" : "Addy", "id" : 104, "department" : "programming", "salary" : 40000 }
+{ "_id" : ObjectId("6254fc193e5d2c678d09ab0e"), "name" : "Satya", "id" : 106, "department" : "Robotics", "salary" : 45000 }
+
+Delete:
+Delete one:
+
+> db.Emp.deleteOne({ id: 106})
+{ "acknowledged" : true, "deletedCount" : 1 }
+
+> db.Emp.find()
+
+{ "_id" : ObjectId("6254fa4a3e5d2c678d09ab0a"), "name" : "Adamya", "id" : 101, "department" : "R&D", "salary" : 30000 }
+{ "_id" : ObjectId("6254fc193e5d2c678d09ab0b"), "name" : "Sunayana", "id" : 102, "department" : "R&D", "salary" : 20000 }
+{ "_id" : ObjectId("6254fc193e5d2c678d09ab0c"), "name" : "Maduri", "id" : 103, "department" : "Robotics", "salary" : 30000 }
+{ "_id" : ObjectId("6254fc193e5d2c678d09ab0d"), "name" : "Addy", "id" : 104, "department" : "programming", "salary" : 40000 }
+
+Delete Many :
+
+> db.Emp.deleteMany({salary: 30000})
+
+{ "acknowledged" : true, "deletedCount" : 2 }
+> db.Emp.find()
+{ "_id" : ObjectId("6254fc193e5d2c678d09ab0b"), "name" : "Sunayana", "id" : 102, "department" : "R&D", "salary" : 20000 }
+{ "_id" : ObjectId("6254fc193e5d2c678d09ab0d"), "name" : "Addy", "id" : 104, "department" : "programming", "salary" : 40000 }
+>
+> db.Emp.insertMany([{ name: "Raksha", id: 110, department: "development", salary: 40000},{ name: "Manav", id: 108, department: " software", salary: 30000}])
+{
+    "acknowledged" : true,
+    "insertedIds" : [
+   	 ObjectId("625503883e5d2c678d09ab10"),
+   	 ObjectId("625503883e5d2c678d09ab11")
+    ]
+}
+
+
+> db.Emp.find()
+
+{ "_id" : ObjectId("6254fc193e5d2c678d09ab0b"), "name" : "Sunayana", "id" : 102, "department" : "R&D", "salary" : 20000 }
+{ "_id" : ObjectId("6254fc193e5d2c678d09ab0d"), "name" : "Addy", "id" : 104, "department" : "programming", "salary" : 40000 }
+{ "_id" : ObjectId("625503883e5d2c678d09ab10"), "name" : "Raksha", "id" : 110, "department" : "development", "salary" : 40000 }
+{ "_id" : ObjectId("625503883e5d2c678d09ab11"), "name" : "Manav", "id" : 108, "department" : " software", "salary" : 30000 }
+>
+AND:
+
+> db.Emp.find({$and:[{ name: "Raksha"},{salary: 40000}]})
+{ "_id" : ObjectId("625503883e5d2c678d09ab10"), "name" : "Raksha", "id" : 110, "department" : "development", "salary" : 40000 }
+>
+
+OR:
+
+> db.Emp.find({$or:[{name: "Manav"},{name: "Addy"}]}).pretty()
+{
+    "_id" : ObjectId("6254fc193e5d2c678d09ab0d"),
+    "name" : "Addy",
+    "id" : 104,
+    "department" : "programming",
+    "salary" : 40000
+}
+{
+    "_id" : ObjectId("625503883e5d2c678d09ab11"),
+    "name" : "Manav",
+    "id" : 108,
+    "department" : " software",
+    "salary" : 30000
+}
+>
+UNSET:
+
+> db.Emp.update({ name: "Sunayana"},{$unset: {department: ""}})
+WriteResult({ "nMatched" : 1, "nUpserted" : 0, "nModified" : 1 })
+> db.Emp.find()
+{ "_id" : ObjectId("6254fc193e5d2c678d09ab0b"), "name" : "Sunayana", "id" : 102, "salary" : 20000 }
+{ "_id" : ObjectId("6254fc193e5d2c678d09ab0d"), "name" : "Addy", "id" : 104, "department" : "programming", "salary" : 40000 }
+{ "_id" : ObjectId("625503883e5d2c678d09ab10"), "name" : "Raksha", "id" : 110, "department" : "development", "salary" : 40000 }
+{ "_id" : ObjectId("625503883e5d2c678d09ab11"), "name" : "Manav", "id" : 108, "department" : " software", "salary" : 30000 }
+>
+
+
