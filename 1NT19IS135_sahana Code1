@@ -1,0 +1,45 @@
+5 April: 
+
+> use sahana
+switched to db sahana
+> db.Emp.insertOne({ name: "Adamya", id: 101, department: "R&D", salary: 30000})
+{
+    "acknowledged" : true,
+    "insertedId" : ObjectId("6254fa4a3e5d2c678d09ab0a")
+}
+Shows database that are currently present.
+> show dbs
+113      	0.000GB
+116      	0.000GB
+admin    	0.000GB
+anirudh  	0.000GB
+config   	0.000GB
+employee 	0.000GB
+local    	0.000GB
+practise 	0.000GB
+sahana   	0.000GB
+sahana135db  0.000GB
+sample   	0.000GB
+> db.Emp.find()
+{ "_id" : ObjectId("6254fa4a3e5d2c678d09ab0a"), "name" : "Adamya", "id" : 101, "department" : "R&D", "salary" : 30000 }
+> db.Emp.insertMany([{ name: "Sunayana", id: 102, department:  "R&D", salary: 20000},{name: "Maduri", id: 103,department: "software", salary: 30000},{ name: "Addy", id: 104, department: "programming", salary: 40000},{ name: "Satya", id: 104, department: "software", salary: 45000},{ name: "Eshwar", id: 105, department: "R&D", salary: 30000}])
+{
+    "acknowledged" : true,
+    "insertedIds" : [
+   	 ObjectId("6254fc193e5d2c678d09ab0b"),
+   	 ObjectId("6254fc193e5d2c678d09ab0c"),
+   	 ObjectId("6254fc193e5d2c678d09ab0d"),
+   	 ObjectId("6254fc193e5d2c678d09ab0e"),
+   	 ObjectId("6254fc193e5d2c678d09ab0f")
+    ]
+}
+
+Gives the records which are inserted into the database
+
+> db.Emp.find()
+{ "_id" : ObjectId("6254fa4a3e5d2c678d09ab0a"), "name" : "Adamya", "id" : 101, "department" : "R&D", "salary" : 30000 }
+{ "_id" : ObjectId("6254fc193e5d2c678d09ab0b"), "name" : "Sunayana", "id" : 102, "department" : "R&D", "salary" : 20000 }
+{ "_id" : ObjectId("6254fc193e5d2c678d09ab0c"), "name" : "Maduri", "id" : 103, "department" : "software", "salary" : 30000 }
+{ "_id" : ObjectId("6254fc193e5d2c678d09ab0d"), "name" : "Addy", "id" : 104, "department" : "programming", "salary" : 40000 }
+{ "_id" : ObjectId("6254fc193e5d2c678d09ab0e"), "name" : "Satya", "id" : 104, "department" : "software", "salary" : 45000 }
+{ "_id" : ObjectId("6254fc193e5d2c678d09ab0f"), "name" : "Eshwar", "id" : 105, "department" : "R&D", "salary" : 30000 }
