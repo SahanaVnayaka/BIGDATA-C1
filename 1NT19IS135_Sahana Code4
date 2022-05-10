@@ -1,0 +1,12 @@
+
+var mapfunction=function(){emit(this.name,this.salary)}
+var reducefunction=function(key,values){return Array.avg(values)}
+ db.Emp.mapReduce(mapfunction,reducefunction,{'out':'Result'})
+{ "result" : "Result", "ok" : 1 }
+> db.Result.find()
+{ "_id" : "Manav", "value" : 30000 }
+{ "_id" : "Raksha", "value" : 40000 }
+{ "_id" : "Addy", "value" : 120000 }
+{ "_id" : "Sunayana", "value" : 20000 }
+>
+
