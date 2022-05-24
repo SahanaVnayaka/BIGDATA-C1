@@ -1,0 +1,117 @@
+
+starting a hadoop:
+
+~$ start-all.sh
+WARNING: Attempting to start all Apache Hadoop daemons as hdoop in 10 seconds.
+WARNING: This is not a recommended production deployment configuration.
+WARNING: Use CTRL-C to abort.
+Starting namenodes on [localhost]
+Starting datanodes
+Starting secondary namenodes [admin1-HP-280-G4-MT-Business-PC]
+Starting resourcemanager
+Starting nodemanagers
+
+
+
+$ jps
+4209 DataNode
+4789 NodeManager
+4453 SecondaryNameNode
+4638 ResourceManager
+5135 Jps
+4063 NameNode
+
+Creating a directory:
+
+~$ hadoop fs -mkdir /Sahana
+
+
+
+hdoop@admin1-HP-280-G4-MT-Business-PC:~$ hadoop fs -ls /
+
+Found 3 items
+drwxr-xr-x   - hdoop supergroup      	0 2022-05-24 09:31 /Sahana
+drwxrwxr-x   - hdoop supergroup      	0 2021-07-28 12:58 /tmp
+drwxr-xr-x   - hdoop supergroup      	0 2021-07-28 12:56 /user
+
+
+Creating a 2 empty file in the created directory :
+by touchz command.
+
+
+
+hdoop@admin1-HP-280-G4-MT-Business-PC:~$ hdfs dfs -touchz /Sahana/file1.txt
+hdoop@admin1-HP-280-G4-MT-Business-PC:~$ hdfs dfs -touchz /Sahana/file2.txt
+
+
+hdoop@admin1-HP-280-G4-MT-Business-PC:~$ hadoop fs -ls /sahana
+ls: `/sahana': No such file or directory
+
+
+hdoop@admin1-HP-280-G4-MT-Business-PC:~$ hadoop fs -ls /Sahana
+Found 2 items
+-rw-r--r--   1 hdoop supergroup      	0 2022-05-24 09:31 /Sahana/file1.txt
+-rw-r--r--   1 hdoop supergroup      	0 2022-05-24 09:32 /Sahana/file2.txt
+~$ hadoop fs -mkdir /1nt19is135
+
+
+
+put command:
+
+hdoop@admin1-HP-280-G4-MT-Business-PC:~$ hadoop fs -ls /1nt19is135
+hdoop@admin1-HP-280-G4-MT-Business-PC:~$ hdfs dfs -put /home/hadoop/Desktop/Sahana_1nt19is135/1nt19is135 /1nt19is135
+
+
+put: `/home/hadoop/Desktop/Sahana_1nt19is135/1nt19is135': No such file or directory
+
+hdoop@admin1-HP-280-G4-MT-Business-PC:~$ hadoop fs -ls /1nt19is135
+hdoop@admin1-HP-280-G4-MT-Business-PC:~$ hdfs dfs -put /home/hdoop/Desktop/Sahana_1nt19is135/1nt19is135 /1nt19is135
+
+
+2022-05-24 09:57:29,297 INFO sasl.SaslDataTransferClient: SASL encryption trust check: localHostTrusted = false, remoteHostTrusted = false
+hdoop@admin1-HP-280-G4-MT-Business-PC:~$ hadoop fs -ls /1nt19is135
+Found 1 items
+-rw-r--r--   1 hdoop supergroup     	18 2022-05-24 09:57 /1nt19is135/1nt19is135
+
+
+hdoop@admin1-HP-280-G4-MT-Business-PC:~$ hdfs dfs -put /home/hdoop/Desktop/Sahana_1nt19is135/1nt19is135
+
+2022-05-24 10:01:29,737 INFO sasl.SaslDataTransferClient: SASL encryption trust check: localHostTrusted = false, remoteHostTrusted = false
+hdoop@admin1-HP-280-G4-MT-Business-PC:~$ hadoop fs -ls /1nt19is135
+
+
+
+Found 1 items
+-rw-r--r--   1 hdoop supergroup     	18 2022-05-24 09:57 /1nt19is135/1nt19is135
+hdoop@admin1-HP-280-G4-MT-Business-PC:~$
+
+Get
+
+
+hdoop@admin1-HP-280-G4-MT-Business-PC:~$ hdfs dfs -get /Sahana /1nt19is135 /home/hdoop/Desktop
+get: `/home/hdoop/Desktop/Sahana/file1.txt': File exists
+get: `/home/hdoop/Desktop/Sahana/file2.txt': File exists
+get: `/home/hdoop/Desktop/1nt19is135/1nt19is135': File exists
+hdoop@admin1-HP-280-G4-MT-Business-PC:~$ hadoop fs -ls /1nt19is135
+Found 1 items
+-rw-r--r--   1 hdoop supergroup     	18 2022-05-24 09:57 /1nt19is135/1nt19is135
+hdoop@admin1-HP-280-G4-MT-Business-PC:~$
+
+
+
+COPY TO LOCAL or GET command
+
+
+hdoop@admin1-HP-280-G4-MT-Business-PC:~$ hadoop fs -ls /1nt19is135
+Found 1 items
+-rw-r--r--   1 hdoop supergroup     	18 2022-05-24 09:57 /1nt19is135/1nt19is135
+hdoop@admin1-HP-280-G4-MT-Business-PC:~$ hadoop fs -ls /
+Found 4 items
+drwxr-xr-x   - hdoop supergroup      	0 2022-05-24 09:57 /1nt19is135
+drwxr-xr-x   - hdoop supergroup      	0 2022-05-24 09:32 /Sahana
+drwxrwxr-x   - hdoop supergroup      	0 2021-07-28 12:58 /tmp
+drwxr-xr-x   - hdoop supergroup      	0 2021-07-28 12:56 /user
+hdoop@admin1-HP-280-G4-MT-Business-PC:~$
+
+
+
